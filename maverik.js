@@ -11,7 +11,7 @@ const { performance } = require('perf_hooks');
    
     // await page.goto('https://maverikstudio.vn/account/login', { waitUntil: 'networkidle2' })
     await page.goto('https://maverikstudio.vn/account/login')
-    await page.type('#customer_email', 'nqvy0901@gmail.com')
+    await page.type('#customer_email', 'vy.nq0901@gmail.com')
     await  page.type('#customer_password', 'fireblood1')
     await page.waitForTimeout(1000)
     await page.click('.btn-signin')
@@ -30,7 +30,7 @@ const { performance } = require('perf_hooks');
             })
  
             console.log('TRYING TO LOGIN...')
-            await page.type('#customer_email', 'khuong98le@gmail.com')
+            await page.type('#customer_email', 'vy.nq0901@gmail.com')
             await  page.type('#customer_password', 'fireblood1')
             await page.click('.btn-signin')
             // await page.waitForNavigation({
@@ -91,7 +91,7 @@ const { performance } = require('perf_hooks');
             const productLinks = await page.evaluate(() => {
                 let links = document.querySelectorAll('h3 > a')
                 links = [...links]
-                l = links.map(i => i.getAttribute('href')).find(i => i.toLowerCase().includes('pant') && i.toLowerCase().includes('chocolatee'))
+                l = links.map(i => i.getAttribute('href')).find(i => i.toLowerCase().includes('twill') && i.toLowerCase().includes('beige'))
                
                 return l
             })
@@ -121,7 +121,7 @@ const { performance } = require('perf_hooks');
         console.log('NO CHALLENGE FORM...')
     }
  
-    // await page.click("#variant-swatch-0 > div.select-swap > div.n-sd.swatch-element.m")
+    await page.click("#variant-swatch-0 > div.select-swap > div.n-sd.swatch-element.m")
     // await page.click("#variant-swatch-0 > div.select-swap > div.n-sd.swatch-element.m.soldou")
     // await page.click("#add-item-form > div.selector-actions > div.quantity-area.clearfix > input:nth-child(3)")
 
@@ -141,15 +141,15 @@ const { performance } = require('perf_hooks');
     console.log('PROCESSING TO CHECKOUT...')
     await page.waitForTimeout(300)
     await page.select('#customer_shipping_province', '50')
-    await page.waitForSelector('#customer_shipping_district > option:nth-child(5)')
+    await page.waitForTimeout(300)
     await page.select('#customer_shipping_district', '480')
-    await page.waitForSelector('#customer_shipping_ward > option:nth-child(5)')
+    await page.waitForTimeout(300)
     await page.select('#customer_shipping_ward', '26914')
     
     console.log('ITS FINAL STEP...')
     await page.waitForTimeout(500) 
-    // await page.waitForSelector('#form_next_step > button')
-    // await page.click('#form_next_step > button')
+    await page.waitForSelector('#form_next_step > button')
+    await page.click('#form_next_step > button')
     const endTime = performance.now()
     console.log(`ITS TOOK: ${endTime - startTime} milliseconds`)
 }

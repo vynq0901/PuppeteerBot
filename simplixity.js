@@ -141,9 +141,9 @@ const numCPUs = require('os').cpus().length;
     console.log('PROCESSING TO CHECKOUT...')
     await page.waitForTimeout(300)
     await page.select('#customer_shipping_province', '50')
-    await page.waitForSelector('#customer_shipping_district > option:nth-child(5)')
+    await page.waitForTimeout(300)
     await page.select('#customer_shipping_district', '480')
-    await page.waitForSelector('#customer_shipping_ward > option:nth-child(5)')
+    await page.waitForTimeout(300)
     await page.select('#customer_shipping_ward', '26914')
     
     console.log('ITS FINAL STEP...')
